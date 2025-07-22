@@ -1,7 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import StickyWhatsApp from "./StickyWhatsApp";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
@@ -16,6 +18,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
+  const handleNavClick = () => {
+    setMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -34,7 +46,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                  onClick={handleNavClick}
+                  className={`px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 ${
                     isActive(item.path)
                       ? "text-primary border-b-2 border-primary"
                       : "text-muted-foreground hover:text-primary"
@@ -79,7 +92,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                       ? "text-primary bg-primary/10"
                       : "text-muted-foreground hover:text-primary hover:bg-muted"
                   }`}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={handleNavClick}
                 >
                   {item.name}
                 </Link>
@@ -98,6 +111,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
       {/* Main Content */}
       <main>{children}</main>
+
+      {/* Sticky WhatsApp */}
+      <StickyWhatsApp />
 
       {/* Footer */}
       <footer className="bg-card border-t border-border">
