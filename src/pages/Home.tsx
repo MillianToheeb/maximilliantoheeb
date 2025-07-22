@@ -76,50 +76,78 @@ const Home = () => {
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="relative py-20 lg:py-32 bg-gradient-hero">
-          <div className="container mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <Badge variant="secondary" className="mb-6 bg-accent/10 text-accent border-accent/20">
-                ✨ Digital Marketing Expert
-              </Badge>
-            </motion.div>
-            
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent"
-            >
-              Hi, I'm{" "}
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="inline-block"
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col lg:flex-row items-center gap-12">
+              {/* Left side - Text content */}
+              <div className="flex-1 text-center lg:text-left">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <Badge variant="secondary" className="mb-6 bg-accent/10 text-accent border-accent/20">
+                    ✨ Digital Marketing Expert
+                  </Badge>
+                </motion.div>
+                
+                <motion.h1 
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent"
+                >
+                  Hi, I'm{" "}
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
+                    className="inline-block"
+                  >
+                    Maximillian Toheeb
+                  </motion.span>
+                </motion.h1>
+              </div>
+
+              {/* Right side - Professional image */}
+              <div className="flex-1 flex justify-center lg:justify-end">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="relative"
+                >
+                  <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden shadow-elegant">
+                    <img 
+                      src="/lovable-uploads/9fd52814-966a-46e7-92cd-29bd4042f636.png" 
+                      alt="Maximillian Toheeb - Digital Marketing Professional"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+                  </div>
+                  <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-primary rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-white font-bold text-lg">MT</span>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+
+            <div className="text-center mt-12">
+              <motion.p 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto"
               >
-                Maximillian Toheeb
-              </motion.span>
-            </motion.h1>
+                I help businesses, creators, and affiliate marketers grow their online presence through 
+                strategic digital marketing and stunning design.
+              </motion.p>
             
-            <motion.p 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto"
-            >
-              I help businesses, creators, and affiliate marketers grow their online presence through 
-              strategic digital marketing and stunning design.
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
-            >
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+              >
               <Button size="lg" asChild className="bg-gradient-primary text-white hover:opacity-90 shadow-elegant">
                 <a href="https://wa.me/2348130270031" target="_blank" rel="noopener noreferrer">
                   Book Free Consultation <ArrowRight className="ml-2 h-5 w-5" />
@@ -128,15 +156,15 @@ const Home = () => {
               <Button variant="outline" size="lg" asChild>
                 <a href="/portfolio">View My Work</a>
               </Button>
-            </motion.div>
+              </motion.div>
 
-            {/* Stats */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-2xl mx-auto"
-            >
+              {/* Stats */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.0 }}
+                className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-2xl mx-auto"
+              >
               {stats.map((stat, index) => (
                 <motion.div 
                   key={index} 
@@ -148,7 +176,8 @@ const Home = () => {
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </motion.div>
               ))}
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
