@@ -10,7 +10,6 @@ import { useLoading } from "@/contexts/LoadingContext";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const { startLoading, stopLoading } = useLoading();
 
   const navItems = [
@@ -23,27 +22,17 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Handle loading on route changes (skip initial load)
+  // Only scroll to top on route changes, no automatic loading
   useEffect(() => {
-    if (isInitialLoad) {
-      setIsInitialLoad(false);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    
-    startLoading();
-    const timer = setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      stopLoading();
-    }, 600);
-    
-    return () => clearTimeout(timer);
-  }, [location.pathname, startLoading, stopLoading, isInitialLoad]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
 
   const handleNavClick = () => {
     setMobileMenuOpen(false);
     startLoading();
-    // Let the useEffect handle the loading stop
+    setTimeout(() => {
+      stopLoading();
+    }, 600);
   };
 
   const handleExternalClick = () => {
@@ -72,7 +61,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  onClick={() => startLoading()}
+                  onClick={handleNavClick}
                   className={`px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 ${
                     isActive(item.path)
                       ? "text-primary border-b-2 border-primary"
@@ -174,7 +163,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     key={item.path}
                     to={item.path}
                     className="block text-muted-foreground hover:text-primary transition-colors"
-                    onClick={() => startLoading()}
+                    onClick={handleNavClick}
                   >
                     {item.name}
                   </Link>
