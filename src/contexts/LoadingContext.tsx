@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 
 interface LoadingContextType {
   isLoading: boolean;
@@ -11,8 +11,23 @@ const LoadingContext = createContext<LoadingContextType | undefined>(undefined);
 export const LoadingProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const startLoading = () => setIsLoading(true);
-  const stopLoading = () => setIsLoading(false);
+  const startLoading = () => {
+    console.log("🟡 Starting loading...");
+    setIsLoading(true);
+  };
+  
+  const stopLoading = () => {
+    console.log("🟢 Stopping loading...");
+    setIsLoading(false);
+  };
+
+  // Force stop loading on mount to ensure clean state
+  useEffect(() => {
+    console.log("📊 LoadingProvider mounted, ensuring clean state");
+    setIsLoading(false);
+  }, []);
+
+  console.log("📊 Current loading state:", isLoading);
 
   return (
     <LoadingContext.Provider value={{ isLoading, startLoading, stopLoading }}>

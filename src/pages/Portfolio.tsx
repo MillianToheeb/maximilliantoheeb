@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import PageTransition from "@/components/PageTransition";
 import PortfolioImageModal from "@/components/PortfolioImageModal";
-import LoadingLogo from "@/components/LoadingLogo";
 import { 
   ExternalLink, 
   Search,
