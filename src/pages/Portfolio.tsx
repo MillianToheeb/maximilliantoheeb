@@ -34,83 +34,83 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: "EcoLife Shopify Store",
+      title: "High-Performance Shopify Store",
       category: "Shopify Stores",
-      description: "Complete e-commerce store for sustainable products with custom theme and optimization.",
-      image: "/placeholder.svg",
-      tags: ["E-commerce", "Sustainability", "Custom Theme"],
+      description: "Complete Shopify store setup with analytics tracking, achieving exceptional conversion rates and sales growth.",
+      image: "/lovable-uploads/f2a469a3-ce31-4644-813e-693d1529b720.png",
+      tags: ["Shopify Analytics", "E-commerce", "Performance Optimization"],
       link: "#",
-      results: "300% increase in conversions"
+      results: "$38K+ total sales, 14.2K sessions"
     },
     {
       id: 2,
-      title: "Local Restaurant Digital Campaign", 
-      category: "Digital Marketing",
-      description: "Full digital marketing strategy including SEO, social media, and local advertising.",
-      image: "/placeholder.svg",
-      tags: ["Local SEO", "Social Media", "PPC"],
+      title: "Mobile Phone Accessories Store",
+      category: "Shopify Stores",
+      description: "Professional e-commerce store for mobile accessories with enhanced protection products and customer testimonials.",
+      image: "/lovable-uploads/c76efbee-f3e3-4c78-9c0d-3e029b23d439.png",
+      tags: ["Product Photography", "Customer Reviews", "Mobile Accessories"],
       link: "#",
-      results: "150% boost in online orders"
+      results: "High conversion mobile-first design"
     },
     {
       id: 3,
-      title: "Handcrafted Jewelry Etsy Shop",
-      category: "Etsy Shops", 
-      description: "Etsy shop optimization, product photography, and listing improvements.",
-      image: "/placeholder.svg",
-      tags: ["Etsy SEO", "Product Photos", "Optimization"],
+      title: "Premium Hat & Accessories Brand",
+      category: "Shopify Stores",
+      description: "Stylish e-commerce platform for premium hats and accessories with clean product showcasing.",
+      image: "/lovable-uploads/0ba70ec1-1d37-4a72-a340-c711d4993587.png",
+      tags: ["Fashion E-commerce", "Premium Branding", "Product Collections"],
       link: "#",
-      results: "500% increase in monthly sales"
+      results: "Enhanced brand positioning"
     },
     {
       id: 4,
-      title: "TechStart Brand Identity",
-      category: "Branding",
-      description: "Complete brand identity package including logo, colors, and marketing materials.",
-      image: "/placeholder.svg", 
-      tags: ["Logo Design", "Brand Guidelines", "Marketing Kit"],
+      title: "Multi-Product Electronics Store",
+      category: "Shopify Stores", 
+      description: "Comprehensive electronics store featuring watches, gadgets, and tech accessories with detailed product pages.",
+      image: "/lovable-uploads/9c679e75-9411-47ff-be6e-859c5d4a3316.png",
+      tags: ["Electronics", "Product Variety", "Tech Accessories"],
       link: "#",
-      results: "Successful $2M funding round"
+      results: "Diverse product portfolio success"
     },
     {
       id: 5,
-      title: "FitLife Coaching Website",
-      category: "Web Design",
-      description: "Responsive website for fitness coach with booking system and client portal.",
-      image: "/placeholder.svg",
-      tags: ["Responsive Design", "Booking System", "Client Portal"],
+      title: "High-Revenue Etsy Shop",
+      category: "Etsy Shops",
+      description: "Optimized Etsy shop generating significant revenue with strategic product positioning and SEO.",
+      image: "/lovable-uploads/dc1311d2-1b28-46fe-a917-c13983ba498b.png",
+      tags: ["Etsy SEO", "Revenue Optimization", "Product Listings"],
       link: "#",
-      results: "200% increase in bookings"
+      results: "$1,471 revenue, 97 orders (30 days)"
     },
     {
       id: 6,
-      title: "Social Media Graphics Suite",
-      category: "Graphics Design", 
-      description: "Complete social media template collection for Instagram and Facebook.",
-      image: "/placeholder.svg",
-      tags: ["Social Media", "Templates", "Instagram"],
+      title: "Etsy Analytics Dashboard Management",
+      category: "Etsy Shops",
+      description: "Professional Etsy shop management with comprehensive analytics tracking and performance monitoring.",
+      image: "/lovable-uploads/ddbb0d97-970a-4ae5-8476-a7a63db0c00b.png",
+      tags: ["Analytics", "Performance Tracking", "Shop Management"],
       link: "#",
-      results: "50K+ downloads"
+      results: "18.9K visits, 372 orders, 2% conversion"
     },
     {
       id: 7,
-      title: "Affiliate Marketing Funnel",
-      category: "Digital Marketing",
-      description: "High-converting affiliate marketing funnel with email automation.",
-      image: "/placeholder.svg",
-      tags: ["Affiliate Marketing", "Sales Funnel", "Email Automation"],
+      title: "Etsy Performance Growth",
+      category: "Etsy Shops",
+      description: "Strategic Etsy shop optimization resulting in consistent growth and improved conversion rates.",
+      image: "/lovable-uploads/23afc451-3273-44b3-a9a5-70b48e813415.png",
+      tags: ["Growth Strategy", "Conversion Optimization", "Sales Analytics"],
       link: "#",
-      results: "800% ROI increase"
+      results: "16.4K visits, $5,001 revenue"
     },
     {
       id: 8,
-      title: "Artisan Crafts Marketplace",
-      category: "Shopify Stores",
-      description: "Multi-vendor marketplace for local artisans with custom functionality.",
-      image: "/placeholder.svg",
-      tags: ["Multi-vendor", "Marketplace", "Local Business"],
+      title: "Multi-Platform E-commerce Success",
+      category: "Digital Marketing",
+      description: "Comprehensive digital marketing strategy across Shopify and Etsy platforms with proven results.",
+      image: "/lovable-uploads/89fb257f-bde8-4484-96a5-54cf4c7e4c22.png",
+      tags: ["Multi-Platform", "Digital Strategy", "Performance Marketing"],
       link: "#",
-      results: "100+ vendors onboarded"
+      results: "1,591 sessions, $498 sales growth"
     }
   ];
 

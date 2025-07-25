@@ -124,7 +124,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-lg font-semibold text-primary mb-4">Maximillian Toheeb</h3>
+              <div className="flex items-center mb-4">
+                <img 
+                  src="/lovable-uploads/40e6e913-3446-4cab-aea5-9aeea3a131c4.png" 
+                  alt="Maximillian Toheeb Logo" 
+                  className="h-8 w-auto mr-3"
+                />
+                <h3 className="text-lg font-semibold text-primary">Maximillian Toheeb</h3>
+              </div>
               <p className="text-muted-foreground">
                 Digital Marketing & Creative Professional helping businesses grow online.
               </p>
