@@ -10,6 +10,7 @@ import { useLoading } from "@/contexts/LoadingContext";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const { startLoading, stopLoading } = useLoading();
 
   const navItems = [
@@ -22,8 +23,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Handle loading on route changes
+  // Handle loading on route changes (skip initial load)
   useEffect(() => {
+    if (isInitialLoad) {
+      setIsInitialLoad(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    
     startLoading();
     const timer = setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -31,7 +38,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     }, 600);
     
     return () => clearTimeout(timer);
-  }, [location.pathname, startLoading, stopLoading]);
+  }, [location.pathname, startLoading, stopLoading, isInitialLoad]);
 
   const handleNavClick = () => {
     setMobileMenuOpen(false);
