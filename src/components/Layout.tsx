@@ -22,29 +22,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Scroll to top on route change and handle loading
+  // Scroll to top on route change (no loading for navigation)
   useEffect(() => {
-    startLoading();
-    const timer = setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      stopLoading();
-    }, 800);
-    
-    return () => clearTimeout(timer);
-  }, [location.pathname, startLoading, stopLoading]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
 
   const handleNavClick = () => {
     setMobileMenuOpen(false);
-    startLoading();
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      stopLoading();
-    }, 800);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleExternalClick = () => {
     startLoading();
-    setTimeout(() => stopLoading(), 1500);
+    setTimeout(() => stopLoading(), 1000);
   };
 
   return (
