@@ -4,10 +4,13 @@ import { Menu, X, Facebook, Instagram } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import StickyWhatsApp from "./StickyWhatsApp";
+import LoadingLogo from "./LoadingLogo";
+import { useLoading } from "@/contexts/LoadingContext";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { startLoading, stopLoading } = useLoading();
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -19,14 +22,29 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Scroll to top on route change
+  // Scroll to top on route change and handle loading
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [location.pathname]);
+    startLoading();
+    const timer = setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      stopLoading();
+    }, 800);
+    
+    return () => clearTimeout(timer);
+  }, [location.pathname, startLoading, stopLoading]);
 
   const handleNavClick = () => {
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    startLoading();
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      stopLoading();
+    }, 800);
+  };
+
+  const handleExternalClick = () => {
+    startLoading();
+    setTimeout(() => stopLoading(), 1500);
   };
 
   return (
@@ -64,7 +82,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
             {/* CTA Button */}
             <div className="hidden md:block">
-              <Button asChild className="bg-gradient-primary text-white hover:opacity-90">
+              <Button 
+                asChild 
+                className="bg-gradient-primary text-white hover:opacity-90"
+                onClick={handleExternalClick}
+              >
                 <a href="https://wa.me/2348130270031" target="_blank" rel="noopener noreferrer">
                   Free Consultation
                 </a>
@@ -102,7 +124,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button asChild className="w-full bg-gradient-primary text-white">
+                <Button 
+                  asChild 
+                  className="w-full bg-gradient-primary text-white"
+                  onClick={handleExternalClick}
+                >
                   <a href="https://wa.me/2348130270031" target="_blank" rel="noopener noreferrer">
                     Free Consultation
                   </a>
@@ -154,33 +180,71 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <h4 className="font-semibold mb-4">Contact & Social</h4>
               <div className="space-y-3 text-muted-foreground">
                 <p>
-                  <a href="mailto:Milliantoheeb@gmil.com" className="hover:text-primary transition-colors">
+                  <a 
+                    href="mailto:Milliantoheeb@gmil.com" 
+                    className="hover:text-primary transition-colors"
+                    onClick={handleExternalClick}
+                  >
                     Milliantoheeb@gmil.com
                   </a>
                 </p>
                 <p>
-                  <a href="https://wa.me/2348130270031" className="hover:text-primary transition-colors">
+                  <a 
+                    href="https://wa.me/2348130270031" 
+                    className="hover:text-primary transition-colors"
+                    onClick={handleExternalClick}
+                  >
                     WhatsApp
                   </a>
                 </p>
                 <div className="flex space-x-4 mt-4">
-                  <a href="https://www.facebook.com/share/14yBF44E5S/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  <a 
+                    href="https://www.facebook.com/share/14yBF44E5S/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:text-primary transition-colors"
+                    onClick={handleExternalClick}
+                  >
                     <Facebook className="h-5 w-5" />
                   </a>
-                  <a href="https://www.instagram.com/maxi_millian020?igsh=MXZ3d3NodWJ4eXJvMg==" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  <a 
+                    href="https://www.instagram.com/maxi_millian020?igsh=MXZ3d3NodWJ4eXJvMg==" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:text-primary transition-colors"
+                    onClick={handleExternalClick}
+                  >
                     <Instagram className="h-5 w-5" />
                   </a>
-                  <a href="https://www.tiktok.com/@maxi_millian02?_t=ZM-8yFYRuSrDXk&_r=1" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  <a 
+                    href="https://www.tiktok.com/@maxi_millian02?_t=ZM-8yFYRuSrDXk&_r=1" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:text-primary transition-colors"
+                    onClick={handleExternalClick}
+                  >
                     <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-.88-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-.04-.1z"/>
                     </svg>
                   </a>
-                  <a href="https://x.com/Maxi_millian02?t=f6pn6doYJDqq38sKgpMRxQ&s=09" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  <a 
+                    href="https://x.com/Maxi_millian02?t=f6pn6doYJDqq38sKgpMRxQ&s=09" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:text-primary transition-colors"
+                    onClick={handleExternalClick}
+                  >
                     <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                     </svg>
                   </a>
-                  <a href="https://pin.it/1R9lKTxD2" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  <a 
+                    href="https://pin.it/1R9lKTxD2" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:text-primary transition-colors"
+                    onClick={handleExternalClick}
+                  >
                     <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 0C5.374 0 0 5.372 0 12.017c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.219-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.888-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.357-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24c6.624 0 11.99-5.373 11.99-12.017C24.007 5.369 18.641.001 12.017.001z"/>
                     </svg>
@@ -194,6 +258,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
       </footer>
+
+      {/* Global Loading Animation */}
+      <LoadingLogo />
     </div>
   );
 };

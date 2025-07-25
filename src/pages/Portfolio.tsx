@@ -23,7 +23,6 @@ const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedImage, setSelectedImage] = useState<{src: string; title: string} | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   const categories = [
     "All",
@@ -292,13 +291,7 @@ const Portfolio = () => {
                               <Button 
                                 variant="ghost" 
                                 size="sm" 
-                                onClick={() => {
-                                  setIsLoading(true);
-                                  setTimeout(() => {
-                                    setSelectedImage({ src: project.image, title: project.title });
-                                    setIsLoading(false);
-                                  }, 1000);
-                                }}
+                                onClick={() => setSelectedImage({ src: project.image, title: project.title })}
                               >
                                 View Project
                               </Button>
@@ -378,9 +371,6 @@ const Portfolio = () => {
           </div>
         </section>
       </div>
-
-      {/* Loading Animation */}
-      {isLoading && <LoadingLogo size="lg" />}
 
       {/* Image Modal */}
       <PortfolioImageModal
