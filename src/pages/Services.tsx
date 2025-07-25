@@ -92,9 +92,15 @@ const Services = () => {
   const specializedServices = [
     {
       icon: <Target className="h-8 w-8" />,
-      title: "Affiliate Marketing Scaling",
-      description: "Proven strategies to scale your affiliate marketing business to 6-figures.",
-      duration: "3-6 months"
+      title: "Sales Funnel Creation",
+      description: "High-converting sales funnels that turn prospects into paying customers automatically.",
+      duration: "2-4 weeks"
+    },
+    {
+      icon: <Star className="h-8 w-8" />,
+      title: "Google Business Profile Growth Expert",
+      description: "Optimize your Google Business Profile to dominate local search and attract more customers.",
+      duration: "1-2 months"
     },
     {
       icon: <Users className="h-8 w-8" />,

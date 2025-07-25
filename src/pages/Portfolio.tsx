@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import PageTransition from "@/components/PageTransition";
+import PortfolioImageModal from "@/components/PortfolioImageModal";
+import LoadingLogo from "@/components/LoadingLogo";
 import { 
   ExternalLink, 
   Search,
@@ -20,6 +22,8 @@ import {
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedImage, setSelectedImage] = useState<{src: string; title: string} | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const categories = [
     "All",
@@ -285,13 +289,19 @@ const Portfolio = () => {
                               <span className="text-sm font-medium text-accent">
                                 {project.results}
                               </span>
-                              {project.link && (
-                                <Button variant="ghost" size="sm" asChild>
-                                  <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                    View Project
-                                  </a>
-                                </Button>
-                              )}
+                              <Button 
+                                variant="ghost" 
+                                size="sm" 
+                                onClick={() => {
+                                  setIsLoading(true);
+                                  setTimeout(() => {
+                                    setSelectedImage({ src: project.image, title: project.title });
+                                    setIsLoading(false);
+                                  }, 1000);
+                                }}
+                              >
+                                View Project
+                              </Button>
                             </div>
                           </div>
                         </CardContent>
@@ -368,6 +378,17 @@ const Portfolio = () => {
           </div>
         </section>
       </div>
+
+      {/* Loading Animation */}
+      {isLoading && <LoadingLogo size="lg" />}
+
+      {/* Image Modal */}
+      <PortfolioImageModal
+        isOpen={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        imageSrc={selectedImage?.src || ""}
+        title={selectedImage?.title || ""}
+      />
     </PageTransition>
   );
 };

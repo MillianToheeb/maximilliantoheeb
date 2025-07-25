@@ -128,7 +128,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <img 
                   src="/lovable-uploads/40e6e913-3446-4cab-aea5-9aeea3a131c4.png" 
                   alt="Maximillian Toheeb Logo" 
-                  className="h-8 w-auto mr-3"
+                  className="h-12 w-auto mr-3"
                 />
                 <h3 className="text-lg font-semibold text-primary">Maximillian Toheeb</h3>
               </div>
