@@ -36,8 +36,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link to="/" className="text-2xl font-bold text-primary">
-              MT
+            <Link to="/" className="flex items-center">
+              <img 
+                src="/lovable-uploads/40e6e913-3446-4cab-aea5-9aeea3a131c4.png" 
+                alt="Maximillian Toheeb Logo" 
+                className="h-10 w-auto"
+              />
             </Link>
 
             {/* Desktop Navigation */}
