@@ -22,14 +22,21 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Scroll to top on route change (no loading for navigation)
+  // Handle loading on route changes
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [location.pathname]);
+    startLoading();
+    const timer = setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      stopLoading();
+    }, 600);
+    
+    return () => clearTimeout(timer);
+  }, [location.pathname, startLoading, stopLoading]);
 
   const handleNavClick = () => {
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    startLoading();
+    // Let the useEffect handle the loading stop
   };
 
   const handleExternalClick = () => {
@@ -58,7 +65,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  onClick={handleNavClick}
+                  onClick={() => startLoading()}
                   className={`px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 ${
                     isActive(item.path)
                       ? "text-primary border-b-2 border-primary"
@@ -160,6 +167,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     key={item.path}
                     to={item.path}
                     className="block text-muted-foreground hover:text-primary transition-colors"
+                    onClick={() => startLoading()}
                   >
                     {item.name}
                   </Link>
