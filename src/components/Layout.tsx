@@ -175,11 +175,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <div className="space-y-3 text-muted-foreground">
                 <p>
                   <a 
-                    href="mailto:Milliantoheeb@gmil.com" 
+                    href="mailto:milliantoheeb@gmail.com" 
                     className="hover:text-primary transition-colors"
                     onClick={handleExternalClick}
                   >
-                    Milliantoheeb@gmil.com
+                    milliantoheeb@gmail.com
                   </a>
                 </p>
                 <p>

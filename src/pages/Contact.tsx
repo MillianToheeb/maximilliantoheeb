@@ -67,7 +67,7 @@ const Contact = () => {
       title: "Email",
       description: "Send detailed project requirements and questions", 
       action: "Email Me",
-      link: "mailto:Milliantoheeb@gmil.com",
+      link: "mailto:milliantoheeb@gmail.com",
       available: "Response within 24hrs"
     },
     {

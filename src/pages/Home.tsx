@@ -458,7 +458,7 @@ const Home = () => {
                   </a>
                 </Button>
                 <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white/10">
-                  <a href="mailto:Milliantoheeb@gmil.com">
+                  <a href="mailto:milliantoheeb@gmail.com">
                     <Mail className="mr-2 h-5 w-5" />
                     Send Email
                   </a>

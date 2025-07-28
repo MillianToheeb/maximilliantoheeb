@@ -53,7 +53,7 @@ const StickyWhatsApp = () => {
               </a>
             </Button>
             <Button variant="outline" asChild className="w-full">
-              <a href="mailto:Milliantoheeb@gmil.com">
+              <a href="mailto:milliantoheeb@gmail.com">
                 Send Email Instead
               </a>
             </Button>
